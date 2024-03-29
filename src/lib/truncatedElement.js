@@ -2,15 +2,23 @@ import React, { cloneElement, useMemo } from "react";
 
 const Tag = "span";
 
-const TruncatedElement = ({ children, lines, getRef }) => {
+const TruncatedElement = ({ children, lines, getRef, isExpanded }) => {
     const getStyles = useMemo(() => {
-        return {
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: parseInt(lines),
+        if(isExpanded) {
+            return {
+                display: "block"
+            }
+        }
+        else {
+            return {
+                overflow: "hidden",
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: parseInt(lines),
+                textOverflow: 'ellipsis'
+            }
         };
-    }, [lines]);
+    }, [lines, isExpanded]);
 
     const getChildrenElement = () => {
         if (children.type) return children;

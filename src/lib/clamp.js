@@ -64,7 +64,7 @@ const Clamp = ({
 
     return (
         <Fragment>
-            <TruncatedElement lines={sLines} getRef={handleConfigElement}>
+            <TruncatedElement lines={sLines} isExpanded={isExpanded} getRef={handleConfigElement}>
                 {children}
             </TruncatedElement>
 
